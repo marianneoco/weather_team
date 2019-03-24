@@ -9,7 +9,18 @@
   </head>
 
   <body>
-    <p>Testing</p>
+
+    {% if weather %}
+      <p>The weather in London is {{weather}}!</p>
+    {% else %}
+      <p>Not sure about the weather right now</p>
+    {% endif %}
+
+    {% if weather == "Clear" %}
+      <img src = "../static/images/clearsky.jpg">
+    {% else %}
+        <p>Sorry, don't have a weather image right now</p>
+    {% endif %}
 
     <p>Let's keep in touch!</p>
       <div id="contact-form">
@@ -21,12 +32,6 @@
           <input type="submit" value="Submit" id="submit-button">
         </form>
       </div>
-
-    <!-- {% if name %}
-      <p>Hello{{name}}!</p>
-    {% else %}
-      <p>Hello anonymous person!</p>
-    {% endif %} -->
 
     <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.js" type="text/javascript"></script>
