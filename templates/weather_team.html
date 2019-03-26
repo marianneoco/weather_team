@@ -47,8 +47,8 @@
             {% endif %}
 
             {% if weather == "Clear" %}
-              <img src = "../static/images/sun.png">
-            {% if weather == "Clouds" %}
+              <img src = "../static/images/sun.png" width="100" height="100">
+            {% elif weather == "Clouds" %}
               <img src = "../static/images/clearsky.jpg">
             {% else %}
                 <p>Sorry, don't have a weather image right now.</p>
@@ -78,15 +78,26 @@
 
         </script>
 
-    <p>Subscribe</p>
-      <div id="contact-form">
-        <form method="post" action="/signup">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required="required">
-          <label for="email">Email address:</label>
-          <input type="email" id="email" name="email" required="required">
-          <input type="submit" value="Submit" id="submit-button">
-        </form>
-      </div>
+        <p>Subscribe</p>
+           <div id="contact-form">
+             <form method="post" action="/signup">
+               <label for="name">Name:</label>
+               <input type="text" id="name" name="name" required="required">
+               <br><br>
+               <label for="surname">Surname:</label>
+               <input type="text" id="surname" name="surname" required="required">
+               <br><br>
+               <label for="birthday">Birthday:</label>
+               <input type="birthday" id="birthday" name="birthday" required="required">
+               <br><br>
+               <label for="profession">Profession:</label>
+               <input type="profession" id="profession" name="profession" required="required">
+               <br><br>
+               <label for="email">Email address:</label>
+               <input type="email" id="email" name="email" required="required">
+               <br><br>
+               <input type="submit" value="Submit" id="submit-button">
+             </form>
+           </div>
 
   </body>
