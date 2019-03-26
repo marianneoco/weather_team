@@ -4,21 +4,17 @@
 
   <head>
     <title>Weather Team</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/weather_team.css")}}">
-    <link rel="stylesheet" href="{{url_for("static", filename="css/bootstrap.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="../static/css/weather_team.css")}}">
+    <link rel="stylesheet" href="{{url_for("static", filename="../static/css/bootstrap.css")}}">
     <!-- if we add Bootstrap in, add to same folder -->
 
-    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.js" type="text/javascript"></script>
-
-<!-- added from previous, not sure what second line does -->
-    <meta name="description" content="JSMaps - Responsive Javascript Maps - http://jsmaps.io">
-    <meta name="CodeFirstGirls" content="LGLab">
+    <script src="../static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../static/js/bootstrap.js" type="text/javascript"></script>
     <!-- Map scripts -->
-    <link href="jsmaps/jsmaps.css" rel="stylesheet" type="text/css" />
-    <script src="jsmaps/jsmaps-libs.js" type="text/javascript"></script>
-    <script src="jsmaps/jsmaps.min.js" type="text/javascript"></script>
-    <script src="maps/LondonBoroughs.js" type="text/javascript"></script>
+    <link href="../static/jsmaps/jsmaps.css" rel="stylesheet" type="text/css" />
+    <script src="../static/jsmaps/jsmaps-libs.js" type="text/javascript"></script>
+    <script src="../static/jsmaps/jsmaps.min.js" type="text/javascript"></script>
+    <script src="../static/maps/LondonBoroughs.js" type="text/javascript"></script>
     <!-- End Map scripts -->
 
   </head>
@@ -30,7 +26,7 @@
          <img src='img/collaborate.jpg' class='img-circle'>-->
         <h1> Events</h1>
         <h3> London </h3>
-      </div>
+    </div>
 
       <!-- Start of main page container -->
             <div class="container" id="mapAndtext">
@@ -51,7 +47,13 @@
             {% endif %}
 
             {% if weather == "Clear" %}
-              <img src = "../static/images/sunny.jpg">
+              <img src = "../static/images/sun.png">
+            {% else %}
+                <p>Sorry, don't have a weather image right now.</p>
+            {% endif %}
+
+            {% if weather == "Clouds" %}
+              <img src = "../static/images/clearsky.jpg">
             {% else %}
                 <p>Sorry, don't have a weather image right now.</p>
             {% endif %}
@@ -80,7 +82,7 @@
 
         </script>
 
-    <p>Let's keep in touch!</p>
+    <p>Subscribe</p>
       <div id="contact-form">
         <form method="post" action="/signup">
           <label for="name">Name:</label>
