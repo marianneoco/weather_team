@@ -9,15 +9,17 @@ payload = {"q": "London, UK", "units":"metric", "appid":"7854c0a8d8d5259f9efb072
 response = requests.get(endpoint, params=payload)
 data = response.json()
 weather = data["weather"][0]["main"]
+temp = data["main"]["temp"]
 
 @app.route("/")
 def main_page():
-    return render_template("weather_team.html", weather=weather)
+    return render_template("weather_team.html", weather=weather, temp=temp)
 
 @app.route("/signup", methods=["POST"])
 def sign_up():
     form_data = request.form
-    return render_template("signup.html")
+    name = form_data["name"]
+    return render_template("signup.html", name=name)
 
 #@app.route("/goodnight")
 #def gn():
