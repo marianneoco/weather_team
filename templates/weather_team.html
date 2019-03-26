@@ -3,30 +3,82 @@
 <html>
 
   <head>
-    <title>My App</title>
+    <title>Weather Team</title>
     <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/weather_team.css")}}">
-    <!-- if we add Bootstrap in, add to same folder <link rel="stylesheet" href="{{url_for("static", filename="css/bootstrap.css")}}> -->
+    <link rel="stylesheet" href="{{url_for("static", filename="css/bootstrap.css")}}">
+    <!-- if we add Bootstrap in, add to same folder -->
+
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+
+<!-- added from previous, not sure what second line does -->
+    <meta name="description" content="JSMaps - Responsive Javascript Maps - http://jsmaps.io">
+    <meta name="CodeFirstGirls" content="LGLab">
+    <!-- Map scripts -->
+    <link href="jsmaps/jsmaps.css" rel="stylesheet" type="text/css" />
+    <script src="jsmaps/jsmaps-libs.js" type="text/javascript"></script>
+    <script src="jsmaps/jsmaps.min.js" type="text/javascript"></script>
+    <script src="maps/LondonBoroughs.js" type="text/javascript"></script>
+    <!-- End Map scripts -->
+
   </head>
 
   <body>
 
-    {% if weather %}
-      <p>The weather in London is {{weather}}!</p>
-    {% else %}
-      <p>Not sure about the weather right now.</p>
-    {% endif %}
+    <div class="container-fluid" id="header">
+      <!-- <div class="col-md-1">
+         <img src='img/collaborate.jpg' class='img-circle'>-->
+        <h1> Events</h1>
+        <h3> London </h3>
+      </div>
 
-    {% if weather == "Clear" %}
-      <img src = "../static/images/clearsky.jpg">
-    {% else %}
-        <p>Sorry, don't have a weather image right now.</p>
-    {% endif %}
+      <!-- Start of main page container -->
+            <div class="container" id="mapAndtext">
+              <div class="row">
+        <div class="col-sm-10">
+          <!-- Map html -->
+          <div class="jsmaps-wrapper" id="LondonBoroughs-map"></div>
+          <!-- End Map html -->
+          </div>
 
-    {% if temp %}
-      <p>The temperature in London is {{temp}}.</p>
-    {% else %}
-      <p>None.</p>
-    {% endif %}
+    <div class="col-sm-2">
+      <div class="weather">
+
+            {% if weather %}
+              <p>The weather in London is {{weather}}!</p>
+            {% else %}
+              <p>Not sure about the weather right now.</p>
+            {% endif %}
+
+            {% if weather == "Clear" %}
+              <img src = "../static/images/clearsky.jpg">
+            {% else %}
+                <p>Sorry, don't have a weather image right now.</p>
+            {% endif %}
+
+            {% if temp %}
+              <p>The temperature in London is {{temp}}.</p>
+            {% else %}
+              <p>None.</p>
+            {% endif %}
+
+        </div>
+      </div>
+
+<!--</div>
+      <button type="button" class="btn btn-success btn-md" id="moreinfo">Borough Information   <span class="glyphicon glyphicon-hand-right"></span></button></a>
+    </div> -->
+
+        <script type="text/javascript">
+
+          $(function() {
+
+            $('#LondonBoroughs-map').JSMaps({
+              map: 'LondonBoroughs'
+            });
+         });
+
+        </script>
 
     <p>Let's keep in touch!</p>
       <div id="contact-form">
@@ -39,8 +91,4 @@
         </form>
       </div>
 
-    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.js" type="text/javascript"></script>
   </body>
-
-</html>
