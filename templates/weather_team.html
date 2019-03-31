@@ -48,20 +48,21 @@ JS End Map html -->
             <script>
               var map;
               function initMap() {
-                var locations = [["Tate Modern", 51.5076, 0.0994], ["Quantum Black", 51.50416, -0.1264994]];
+                var locations = [["Tate Modern", 51.5076, -0.0994], ["Quantum Black", 51.50416, -0.1264994], ["Science Musuem", 51.4978, -0.1745],
+                ["Brockwell Park", 51.4507, -0.1064], ["Ponds", 51.5671, -0.1605], ["Victoria Park", 51.5366, -0.0390], ["Wellcome Collection", 51.5260, -0.1340]];
                 map = new google.maps.Map(document.getElementById('map'), {
-                  center: {lat: 51.5, lng: -0.126},
-                  zoom: 12
+                  center: {lat: 51.51, lng: -0.126},
+                  zoom: 11.5
                 });
                 var marker, i;
-                  for (i = 1; i < locations.length; i++) {
+                  for (i = 0; i < locations.length; i++) {
                     marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                     map: map,
-                    title: "Quantum Black",
+                    title: locations[i][0]
                   });
                 }
-                var contentString = "6.30pm to 8.30pm CFG Python Course"
+                var contentString = "6pm Talk on the Psychology of Magic"
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                   });
@@ -85,36 +86,35 @@ JS End Map html -->
             {% endif %}
 
             {% if weather == "Clear" %}
-              <img src = "../static/images/clear_sky.png" height = 150 width = 150>
+              <img src = "../static/images/clear_sky.png" height = 120 width = 120>
             {% elif weather == "Clouds" %}
-              <img src = "../static/images/clouds.png" height = 150 width = 150>
+              <img src = "../static/images/clouds.png" height = 120 width = 120>
             {% elif weather == "Haze" %}
-              <img src = "../static/images/haze.jpg" height = 150 width = 150>
+              <img src = "../static/images/haze.jpg" height = 120 width = 120>
             {% elif weather == "Drizzle" %}
-              <img src = "../static/images/rain.png" height = 150 width = 150>
+              <img src = "../static/images/rain.png" height = 120 width = 120>
             {% elif weather == "Rain" %}
-              <img src = "../static/images/rain.png" height = 150 width = 150>
+              <img src = "../static/images/rain.png" height = 120 width = 120>
             {% elif weather == "Mist" %}
-              <img src = "../static/images/mist.png" height = 150 width = 150>
+              <img src = "../static/images/mist.png" height = 120 width = 120>
             {% elif weather == "Fog" %}
-              <img src = "../static/images/haze.jpg" height = 150 width = 150>
+              <img src = "../static/images/haze.jpg" height = 120 width = 120>
             {% elif weather == "Snow" %}
-              <img src = "../static/images/snow.png" height = 150 width = 150>
+              <img src = "../static/images/snow.png" height = 120 width = 120>
             {% elif weather == "Thunderstorm" %}
-              <img src = "../static/images/thunderstorm.png" height = 150 width = 150>
+              <img src = "../static/images/thunderstorm.png" height = 120 width = 120>
             {% else %}
                 <p>Sorry, don't have a weather image right now.</p>
             {% endif %}
 
             {% if temp %}
-              <br><br><p>The temperature in London is {{temp}}C.</p>
+              <br><br><p>The temperature in London is {{temp}} &#8451;.</p>
             {% else %}
               <br><br><p>None.</p>
             {% endif %}
 
             <br>
             The latest tweet about London: <blockquote class="twitter-tweet"> {{twitter}}!</blockquote>
-            <br>
             Trending on Twitter in London: <blockquote class="twitter-trend"> {{number_one_trend}} </blockquote>
             <a href="{{ url_for('subscribe') }}" class="subButton">SUBSCRIBE</a>
           </div>

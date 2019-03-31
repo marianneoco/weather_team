@@ -4,12 +4,12 @@
 
   <head>
     <title>My App</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/weather_team.css")}}">
-    <!-- if we add Bootstrap in, add to same folder <link rel="stylesheet" href="{{url_for("static", filename="css/bootstrap.css")}}> -->
+    <link rel="stylesheet" href="{{url_for("static", filename="../static/css/bootstrap.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="../static/css/weather.css")}}">
   </head>
 
   <body>
-    <p>Thanks {{name}}, please check your email! This is a new HTML page</p>
+    <p>Thanks {{name}}, please check your email!</p>
 
     <!-- {% if name %}
       <p>Hello{{name}}!</p>
