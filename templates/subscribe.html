@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <title>Weather Team</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="../static/css/weather_team.css")}}">
+    <link rel="stylesheet" href="{{url_for("static", filename="../static/css/bootstrap.css")}}">
+    <!-- if we add Bootstrap in, add to same folder -->
+
+
+<body>
+
+  <div class="col-md-2" align="left">
+
+  <!-- subscribe form --->
+    <p>Subscribe</p>
+       <div id="contact-form">
+         <form method="post" action="/signup">
+           <label for="name">Name:</label>
+           <input type="text" id="name" name="name" required="required">
+           <br><br>
+           <label for="surname">Surname:</label>
+           <input type="text" id="surname" name="surname" required="required">
+           <br><br>
+           <label for="birthday">Birthday:</label>
+           <input type="birthday" id="birthday" name="birthday" required="required">
+           <br><br>
+           <label for="profession">Profession:</label>
+           <input type="profession" id="profession" name="profession" required="required">
+           <br><br>
+           <label for="email">Email address:</label>
+           <input type="email" id="email" name="email" required="required">
+           <br><br>
+           <input type="submit" value="Submit" id="submit-button">
+         </form>
+       </div>
+
+</div>
+
+    </body>
+
+</html>
