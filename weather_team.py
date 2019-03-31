@@ -15,6 +15,10 @@ tweet = the_tweets[0].text
 print json.dumps(tweet)
 twitter = json.dumps(tweet)
 
+trends = twitter_api.trends_place(id = 44418)
+print trends[0]["trends"][0]["name"]
+number_one_trend = trends[0]["trends"][0]["name"]
+
 #def process_or_store(tweet):
     #for tweet in the_tweets:
         #process_or_store(tweet._json)
@@ -36,7 +40,7 @@ print data
 
 @app.route("/")
 def main_page():
-    return render_template("weather_team.html", weather=weather, temp=temp, twitter=twitter)
+    return render_template("weather_team.html", weather=weather, temp=temp, twitter=twitter, number_one_trend=number_one_trend)
 
 #subscribe button redirects to subscribe form pages
 @app.route('/subscribe', methods=['GET', 'POST'])
