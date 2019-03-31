@@ -37,31 +37,43 @@
           <!-- End Map html -->
           </div>
 
-    <div class="col-sm-2">
-      <div class="weather">
+          <div class="col-sm-2">
+            <div class="weather">
 
-            {% if weather %}
-              <p>Weather: {{weather}}!</p>
-            {% else %}
-              <p>Not sure about the weather right now.</p>
-            {% endif %}
+                  {% if weather %}
+                    <p>The weather in London is {{weather}}!</p>
+                  {% else %}
+                    <p>Not sure about the weather right now.</p>
+                  {% endif %}
 
-            {% if weather == "Clear" %}
-              <img src = "../static/images/sun.png" width="100" height="100">
-            {% elif weather == "Clouds" %}
-              <img src = "../static/images/clearsky.jpg">
-            {% else %}
-                <p>Sorry, don't have a weather image right now.</p>
-            {% endif %}
+                  {% if weather == "Clearsky" %}
+                    <img src = "../static/images/clear_sky.png" width="100" height="100">
+                  {% elif weather == "Clouds" %}
+                    <img src = "../static/images/clouds.png" width="100" height="100">
+                  {% elif weather == "Mist" %}
+                    <img src = "../static/images/mist.png" width="100" height="100">
+                  {% elif weather == "Rain" %}
+                    <img src = "../static/images/rain.png" width="100" height="100">
+                  {% elif weather == "Snow" %}
+                    <img src = "../static/images/snow.png" width="100" height="100">
+                  {% elif weather == "Storm" %}
+                    <img src = "../static/images/storm.png" width="100" height="100">
+                  {% elif weather == "Thunderstorm" %}
+                    <img src = "../static/images/thunderstorm.png" width="100" height="100">
 
-            {% if temp %}
-              <p>The temperature in London is {{temp}}.</p>
-            {% else %}
-              <p>None.</p>
-            {% endif %}
 
-        </div>
-      </div>
+                  {% else %}
+                      <p>Sorry, don't have a weather image right now.</p>
+                  {% endif %}
+
+                  {% if temp %}
+                    <p>The temperature in London is {{temp}}.</p>
+                  {% else %}
+                    <p>None.</p>
+                  {% endif %}
+
+              </div>
+            </div>
 
 <!--</div>
       <button type="button" class="btn btn-success btn-md" id="moreinfo">Borough Information   <span class="glyphicon glyphicon-hand-right"></span></button></a>
@@ -78,6 +90,13 @@
 
         </script>
 
+
+
+        <!-- Subscribe link to the subscribe form-->
+        <p><a href="{{ url_for('subscribe') }}">SUBSCRIBE</a></p>
+
+
+<!-- old subscribe form
         <p>Subscribe</p>
            <div id="contact-form">
              <form method="post" action="/signup">
@@ -99,5 +118,9 @@
                <input type="submit" value="Submit" id="submit-button">
              </form>
            </div>
+         -->
+
+   </body>
+   </html>
 
   </body>
