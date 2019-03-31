@@ -6,7 +6,7 @@
     <title>Weather Team</title>
     <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="../static/css/weather_team.css")}}">
     <link rel="stylesheet" href="{{url_for("static", filename="../static/css/bootstrap.css")}}">
-    <!-- if we add Bootstrap in, add to same folder -->
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
 
     <script src="../static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="../static/js/bootstrap.js" type="text/javascript"></script>
@@ -21,7 +21,7 @@
 
   <body>
 
-    <div class="container-fluid" id="header">
+    <div class="jumbotron text-center">
       <!-- <div class="col-md-1">
          <img src='img/collaborate.jpg' class='img-circle'>-->
         <h1> Events</h1>
@@ -29,16 +29,17 @@
     </div>
 
       <!-- Start of main page container -->
-            <div class="container" id="mapAndtext">
-              <div class="row">
-        <div class="col-sm-10">
+<div class="container" id="mapAndtext">
+      <div class="row">
+        <div class="col-sm-9">
           <!-- Map html -->
-          <div class="jsmaps-wrapper" id="LondonBoroughs-map"></div>
-          <!-- End Map html -->
+          <div class="jsmaps-wrapper" id="LondonBoroughs-map">
           </div>
+          <!-- End Map html -->
+        </div>
 
-    <div class="col-sm-2">
-      <div class="weather">
+        <div class="col-sm-3">
+          <div class="weather">
 
             {% if weather %}
               <p>Weather: {{weather}}!</p>
@@ -47,18 +48,32 @@
             {% endif %}
 
             {% if weather == "Clear" %}
-              <img src = "../static/images/sun.png" width="100" height="100">
+              <img src = "../static/images/sun.png" class = img-responsive>
             {% elif weather == "Clouds" %}
-              <img src = "../static/images/clearsky.jpg">
+              <img src = "../static/images/clearsky.jpg" class = img-responsive>
+            {% elif weather == "Haze" %}
+              <img src = "../static/images/haze.jpg" class = img-responsive>
+            {% elif weather == "Drizzle" %}
+              <img src = "../static/images/haze.jpg" class = img-responsive>
+            {% elif weather == "Rain" %}
+              <img src = "../static/images/haze.jpg" class = img-responsive>
+            {% elif weather == "Mist" %}
+              <img src = "../static/images/haze.jpg" class = img-responsive>
+            {% elif weather == "Fog" %}
+              <img src = "../static/images/haze.jpg" class = img-responsive>
+            {% elif weather == "Thunderstorm" %}
+              <img src = "../static/images/haze.jpg" class = img-responsive>
             {% else %}
                 <p>Sorry, don't have a weather image right now.</p>
             {% endif %}
 
             {% if temp %}
-              <p>The temperature in London is {{temp}}.</p>
+              <p>The temperature in London is {{temp}}C.</p>
             {% else %}
               <p>None.</p>
             {% endif %}
+
+            The latest tweet about London: {{twitter}}!
 
         </div>
       </div>
@@ -78,8 +93,12 @@
 
         </script>
 
-        <p>Subscribe</p>
-           <div id="contact-form">
+    </div>
+</div>
+
+
+<div id="contact-form" class = "text-center">
+  <p>Subscribe</p>
              <form method="post" action="/signup">
                <label for="name">Name:</label>
                <input type="text" id="name" name="name" required="required">
@@ -98,6 +117,6 @@
                <br><br>
                <input type="submit" value="Submit" id="submit-button">
              </form>
-           </div>
+</div>
 
   </body>
