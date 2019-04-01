@@ -55,14 +55,12 @@ def subscribe():
     return render_template('subscribe.html')
 
 
-
-
 #form subscribe
 @app.route("/signup", methods=["POST"])
 def sign_up():
     form_data = request.form
     name = form_data["name"]
-    return render_template("signup.html", name=name)
+    return render_template("signup.html", name=name, weather=weather, temp=temp, twitter=twitter, number_one_trend=number_one_trend)
 
 #@app.route("/goodnight")
 #def gn():

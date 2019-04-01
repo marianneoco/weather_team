@@ -3,22 +3,160 @@
 <html>
 
   <head>
-    <title>My App</title>
+    <title>Weather Team</title>
     <link rel="stylesheet" href="{{url_for("static", filename="../static/css/bootstrap.css")}}">
-    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="../static/css/weather.css")}}">
+    <link rel="stylesheet" href="{{url_for("static", filename="../static/css/weather.css")}}">
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+
+    <script src="../static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../static/js/bootstrap.js" type="text/javascript"></script>
+
+    <!-- Old Map scripts
+    <link href="../static/jsmaps/jsmaps.css" rel="stylesheet" type="text/css" />
+    <script src="../static/jsmaps/jsmaps-libs.js" type="text/javascript"></script>
+    <script src="../static/jsmaps/jsmaps.min.js" type="text/javascript"></script>
+    <script src="../static/maps/LondonBoroughs.js" type="text/javascript"></script>
+     End Map scripts -->
+
+    <!--Google maps -->
+    <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+    <!--end Google maps -->
+
   </head>
 
   <body>
-    <p>Thanks {{name}}, please check your email!</p>
 
-    <!-- {% if name %}
-      <p>Hello{{name}}!</p>
-    {% else %}
-      <p>Hello anonymous person!</p>
-    {% endif %} -->
+<!--<div class="jumbotron text-center">
+    <h1> Events</h1>
+    <h3> London <span class="glyphicon glyphicon-hand-right"></span> </h3>
+</div> -->
 
-    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.js" type="text/javascript"></script>
-  </body>
+<!-- JS Map html
+    <div class="jsmaps-wrapper" id="LondonBoroughs-map">
+    </div>
+JS End Map html -->
 
+<!-- Start of main page container -->
+<div class="container">
+<br><br><br>
+      <div class="row">
+        <div class="col-sm-8">
+  <!-- Google map html -->
+          <div id="map">
+          </div>
+            <script>
+              var map;
+              function initMap() {
+                var locations = [["Tate Modern", 51.5076, -0.0994], ["Quantum Black", 51.50416, -0.1264994], ["Science Musuem", 51.4978, -0.1745],
+                ["Brockwell Park", 51.4507, -0.1064], ["Ponds", 51.5671, -0.1605], ["Victoria Park", 51.5366, -0.0390], ["Wellcome Collection", 51.5260, -0.1340]];
+                map = new google.maps.Map(document.getElementById('map'), {
+                  center: {lat: 51.51, lng: -0.126},
+                  zoom: 11.5
+                });
+                var marker, i;
+                  for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map,
+                    title: locations[i][0]
+                  });
+                }
+                var contentString = "6pm Talk on the Psychology of Magic"
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                  });
+                marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                  });
+              }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ0EYAQ5jn1ePSK_6hUBzrtEfLBGX2Dls&callback=initMap"
+            async defer>
+            </script>
+  <!-- Google map html -->
+          </div>
+
+        <div class="col-sm-4 text-center">
+
+            {% if weather %}
+              <p>Weather: {{weather}}!</p>
+            {% else %}
+              <p>Not sure about the weather right now.</p>
+            {% endif %}
+
+            {% if weather == "Clear" %}
+              <img src = "../static/images/clear_sky.png" height = 120 width = 120>
+            {% elif weather == "Clouds" %}
+              <img src = "../static/images/clouds.png" height = 120 width = 120>
+            {% elif weather == "Haze" %}
+              <img src = "../static/images/haze.jpg" height = 120 width = 120>
+            {% elif weather == "Drizzle" %}
+              <img src = "../static/images/rain.png" height = 120 width = 120>
+            {% elif weather == "Rain" %}
+              <img src = "../static/images/rain.png" height = 120 width = 120>
+            {% elif weather == "Mist" %}
+              <img src = "../static/images/mist.png" height = 120 width = 120>
+            {% elif weather == "Fog" %}
+              <img src = "../static/images/haze.jpg" height = 120 width = 120>
+            {% elif weather == "Snow" %}
+              <img src = "../static/images/snow.png" height = 120 width = 120>
+            {% elif weather == "Thunderstorm" %}
+              <img src = "../static/images/thunderstorm.png" height = 120 width = 120>
+            {% else %}
+                <p>Sorry, don't have a weather image right now.</p>
+            {% endif %}
+
+            {% if temp %}
+              <br><br><p>The temperature in London is {{temp}} &#8451;.</p>
+            {% else %}
+              <br><br><p>None.</p>
+            {% endif %}
+
+            <br>
+            The latest tweet about London: <blockquote class="twitter-tweet"> {{twitter}}!</blockquote>
+            Trending on Twitter in London: <blockquote class="twitter-trend"> {{number_one_trend}} </blockquote>
+            <class = "result"><p>Thanks <strong>{{name}}</strong>, please check your email!</p></class>
+          </div>
+
+      <!-- Subscribe link to the subscribe form-->
+
+        <!--old map script
+
+        <script type="text/javascript">
+
+          $(function() {
+
+            $('#LondonBoroughs-map').JSMaps({
+              map: 'LondonBoroughs'
+            });
+         });
+
+       </script> -->
+
+<!-- old subscribe form
+        <p>Subscribe</p>
+           <div id="contact-form">
+             <form method="post" action="/signup">
+               <label for="name">Name:</label>
+               <input type="text" id="name" name="name" required="required">
+               <br><br>
+               <label for="surname">Surname:</label>
+               <input type="text" id="surname" name="surname" required="required">
+               <br><br>
+               <label for="birthday">Birthday:</label>
+               <input type="birthday" id="birthday" name="birthday" required="required">
+               <br><br>
+               <label for="profession">Profession:</label>
+               <input type="profession" id="profession" name="profession" required="required">
+               <br><br>
+               <label for="email">Email address:</label>
+               <input type="email" id="email" name="email" required="required">
+               <br><br>
+               <input type="submit" value="Submit" id="submit-button">
+             </form>
+           </div>
+         -->
+
+   </body>
 </html>
