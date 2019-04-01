@@ -4,8 +4,8 @@
 
   <head>
     <title>Weather Team</title>
-    <link rel="stylesheet" href="{{url_for("static", filename="../static/css/bootstrap.css")}}">
-    <link rel="stylesheet" href="{{url_for("static", filename="../static/css/weather.css")}}">
+    <link rel="stylesheet" href="{{url_for("static", filename="../static/css/bootstrap.css")}}" />
+    <link rel="stylesheet" href="{{url_for("static", filename="../static/css/styles.css")}}" />
     <meta name="viewport" content="width-device-width, initial-scale=1" />
 
     <script src="../static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
@@ -80,9 +80,9 @@ JS End Map html -->
         <div class="col-sm-4 text-center">
 
             {% if weather %}
-              <p>Weather: {{weather}}!</p>
+              <p class="text">Weather: {{weather}}!</p>
             {% else %}
-              <p>Not sure about the weather right now.</p>
+              <p class ="text">Not sure about the weather right now.</p>
             {% endif %}
 
             {% if weather == "Clear" %}
@@ -108,14 +108,14 @@ JS End Map html -->
             {% endif %}
 
             {% if temp %}
-              <br><br><p>The temperature in London is {{temp}} &#8451;.</p>
+              <br><br><p class ="text">The temperature in London is {{temp}} &#8451;.</p>
             {% else %}
-              <br><br><p>None.</p>
+              <br><br><p class ="text">None.</p>
             {% endif %}
 
             <br>
-            The latest tweet about London: <blockquote class="twitter-tweet"> {{twitter}}!</blockquote>
-            Trending on Twitter in London: <blockquote class="twitter-trend"> {{number_one_trend}} </blockquote>
+            <class ="text">The latest tweet about London: <blockquote class="twitter-tweet"> {{twitter}}!</blockquote>
+            <class ="text">Trending on Twitter in London: <blockquote class="twitter-trend"> {{number_one_trend}} </blockquote>
             <a href="{{ url_for('subscribe') }}" class="subButton">SUBSCRIBE</a>
           </div>
 
