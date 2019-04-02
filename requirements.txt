@@ -25,4 +25,3 @@ virtualenv==16.4.3
 Werkzeug==0.14.1
 whitenoise==4.1.2
 win-inet-pton==1.1.0
-requests
