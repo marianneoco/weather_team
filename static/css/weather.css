@@ -53,10 +53,10 @@ input {
 
 /* Add a background color and some padding around the form */
 .box {
-  height: auto;
-  border-radius: 5px;
-  background-color: #b2d7e8;
-  padding: 20px;
+ height: auto;
+ border-radius: 5px;
+ background-image: url("https://www.london.gov.uk/sites/default/files/planning-outer-boroughs.jpg?v=62036");
+ padding: 20px;
 }
   /*width: 100%;
   box-sizing: border-box;
