@@ -1,1 +1,1 @@
-web: gunicorn weather_team.wsgi —-log-file -
+web: python run.py

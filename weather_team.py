@@ -10,7 +10,7 @@ auth = tweepy.OAuthHandler("LcPXgIykI9tA3mjzLDvVeRV9E","jSznFDi0f0lrJQgFdnFUFXm9
 auth.set_access_token ("813484763013115904-cNhrOkjXag5kyyXnaWxVOCkqprPpXUy", "1DXNDmeY6gSXFYWZZTsAhStrIMLDwVlAuZIQqBDIWrWOG")
 twitter_api = tweepy.API(auth)
 the_tweets = twitter_api.search(
-    q = "@TfL")
+    q = "London")
 tweet = the_tweets[0].text
 print json.dumps(tweet)
 twitter = json.dumps(tweet)
