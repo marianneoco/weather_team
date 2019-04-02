@@ -6,28 +6,31 @@
     <title>Weather Team</title>
     <link rel="stylesheet" href="{{url_for("static", filename="../static/css/bootstrap.css")}}">
     <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="../static/css/weather.css")}}">
+    <!-- if we add Bootstrap in, add to same folder -->
+
 
 <body>
 
-  <div class="col-md-2" align="left">
+  <div id="form" class="box" align="center">
 
   <!-- subscribe form --->
-    <p>Subscribe</p>
-       <div id="contact-form">
+    <h1>Subscribe to our newslater</h1>
+    <p>Fill the form below and check your emails!</p>
+       <div id="contact-form" class="form">
          <form method="post" action="/signup">
-           <label for="name">Name:</label>
+           <label for="name">Name:</label><br>
            <input type="text" id="name" name="name" required="required">
            <br><br>
-           <label for="surname">Surname:</label>
+           <label for="surname">Surname:</label><br>
            <input type="text" id="surname" name="surname" required="required">
            <br><br>
-           <label for="birthday">Birthday:</label>
+           <label for="birthday">Birthday:</label><br>
            <input type="birthday" id="birthday" name="birthday" required="required">
            <br><br>
-           <label for="profession">Profession:</label>
+           <label for="profession">Profession:</label><br>
            <input type="profession" id="profession" name="profession" required="required">
            <br><br>
-           <label for="email">Email address:</label>
+           <label for="email">Email address:</label><br>
            <input type="email" id="email" name="email" required="required">
            <br><br>
            <input type="submit" value="Submit" id="submit-button">
